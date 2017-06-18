@@ -1,18 +1,9 @@
 # Just a whisper. I hear it in my ghost. 
 
 ## Setup
-To install all the dependencies, run:
+You need to setup Redis server.
 
 ```
 bundle install
+foreman start
 ```
-
-Next the app requires some env vars for configuration. A sample `.env.sample` is provided for running the app locally. You can copy `.env.sample` to `.env` which foreman will pick up.
-
-Using foreman we can boot the application.
-
-```
-$ foreman start
-```
-
-You can now visit <http://localhost:5000> to see the application.
