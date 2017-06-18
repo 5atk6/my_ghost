@@ -4,10 +4,10 @@ require 'redis'
 require 'json'
 require 'erb'
 
-module ChatDemo
-  class ChatBackend
+module Whisper
+  class WhisperBackend
     KEEPALIVE_TIME = 15 # in seconds
-    CHANNEL        = "chat-demo"
+    CHANNEL        = 'whisper'
 
     def initialize(app)
       @app     = app

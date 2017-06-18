@@ -1,6 +1,6 @@
 require 'sinatra/base'
 
-module ChatDemo
+module Whisper
   class App < Sinatra::Base
     # to get form
     get "/" do

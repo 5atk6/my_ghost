@@ -1,4 +1,4 @@
-# Whispering my ghost...
+# Just a whisper. I hear it in my ghost. 
 
 ## Setup
 To install all the dependencies, run:
