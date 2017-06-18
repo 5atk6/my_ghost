@@ -22,6 +22,7 @@ module Whisper
       datetime = datetime.new_offset('+09:00')
       date_str = datetime.strftime("%Y/%m/%d %H:%M:%S")
       hash = { text: params['message'], created_at: date_str }
+
       redis.lpush("whispers", hash.to_json)
       set_whispers
       slim :"new.html"
@@ -51,7 +52,8 @@ module Whisper
     end
 
     def set_whispers
-      @whispers = redis.lrange("whispers", -20, 20)
+      len = redis.llen("whispers")
+      @whispers = redis.lrange("whispers", 0, 50)
       @whispers = @whispers.map { |json| JSON.parse(json) }
     end
   end
