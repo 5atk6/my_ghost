@@ -5,11 +5,12 @@ var ws       = new WebSocket(uri);
 ws.onmessage = function(message) {
   var data = JSON.parse(message.data);
   if ( data.func == 'post' ) {
-    var tr = "<tr><td>" + data.created_at + "</td><td>" +  data.text + "</td><td></td></tr>"
+    var button = "<button class=\"button is-primary\" data-text=\"" + data.text + "\" id=\"play-button\">再生</button>"
+    var tr = "<tr><td>" + data.created_at + "</td><td>" +  data.text + "</td><td>" + button + "</td></tr>"
     $(tr).insertBefore('table > tbody > tr:first').slideDown();;
   }
 };
 
-$("#play-button").on("click", function() {
+$(document).delegate("#play-button", "click", function() {
   ws.send(JSON.stringify({ func: 'play', text: $(this).data('text') }));
 });

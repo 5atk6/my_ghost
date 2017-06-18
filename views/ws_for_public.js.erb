@@ -1,0 +1,11 @@
+var scheme   = "<%= @scheme %>";
+var uri      = scheme + window.document.location.host + "/";
+var ws       = new WebSocket(uri);
+
+ws.onmessage = function(message) {
+  var data = JSON.parse(message.data);
+  if ( data.func == 'post' ) {
+    var tr = "<tr><td>" + data.created_at + "</td><td>" +  data.text + "</td></tr>"
+    $(tr).insertBefore('table > tbody > tr:first').slideDown();;
+  }
+};

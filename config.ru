@@ -1,5 +1,5 @@
 require './app'
-require './middlewares/chat_backend'
+require './middlewares/whisper_backend'
 
 use Whisper::WhisperBackend
 run Whisper::App

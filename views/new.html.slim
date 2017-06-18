@@ -11,7 +11,7 @@ html
 
     .section
       .container
-        form action="/" method="POST"
+        form#whisper-form action="/" method="POST"
           .field
             p.control
               input.input(name="message" type="text" placeholder="囁くのよ、貴方のゴーストが" autofocus)
@@ -24,10 +24,13 @@ html
           table.table
             thead
               tr
-                th date
-                th text
+                td date
+                td text
             tbody
             - @whispers.each do |whisper|
               tr
-                th = whisper['created_at']
-                th = whisper['text']
+                td = whisper['created_at']
+                td = whisper['text']
+
+    script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"
+    script type="text/javascript" src="assets/js/ws_for_public.js"
