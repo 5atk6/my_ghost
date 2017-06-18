@@ -2,9 +2,12 @@ source "https://rubygems.org"
 
 ruby '2.3.0'
 
-gem 'sinatra-contrib'
+github 'sinatra/sinatra' do
+  gem 'sinatra-contrib'
+end
 gem 'faye-websocket'
-gem 'sinatra'
 gem 'puma'
 gem 'redis'
 gem 'slim'
+gem 'pry'
+gem 'json'

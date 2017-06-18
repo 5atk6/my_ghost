@@ -1,0 +1,20 @@
+html
+  head
+    title Whispers| Just a whisper
+    link href="assets/css/application.css" rel="stylesheet" media="screen"
+    link href="assets/css/bulma.css" rel="stylesheet" media="screen"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+  body
+    .section
+      .container
+        h1.title Whispers
+
+    .section
+      .container
+        - if @whispers
+          - @whispers.each do |whisper|
+            ul
+              li = "#{whisper['created_at']}: #{whisper['text']}"
+
+    script type="text/javascript" src="assets/js/jquery-2.0.3.min.js"
+    script type="text/javascript" src="assets/js/ws.js"

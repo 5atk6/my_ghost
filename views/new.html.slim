@@ -1,21 +1,33 @@
 html
   head
     title Just a whisper
+    link href="assets/css/application.css" rel="stylesheet" media="screen"
     link href="assets/css/bulma.css" rel="stylesheet" media="screen"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
   body
     .section
       .container
-        h1.title I hear it in your ghost
+        h1.title I hear it from your ghost
 
     .section
       .container
         form action="/" method="POST"
           .field
             p.control
-              input.input(name="message" type="text" placeholder="囁くのよ、私のゴーストが" autofocus)
+              input.input(name="message" type="text" placeholder="囁くのよ、貴方のゴーストが" autofocus)
           .field
             button class="button is-primary" type="submit" 送信
 
-    .section
-      .container
+    - if @whispers
+      .section
+        .container
+          table.table
+            thead
+              tr
+                th date
+                th text
+            tbody
+            - @whispers.each do |whisper|
+              tr
+                th = whisper['created_at']
+                th = whisper['text']
