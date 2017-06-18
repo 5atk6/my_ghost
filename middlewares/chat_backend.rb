@@ -12,7 +12,7 @@ module ChatDemo
     def initialize(app)
       @app     = app
       @clients = []
-      url = ENV["REDISCLOUD_URL"] || 'redis://localhost:6379'
+      url = ENV["REDIS_URL"] || 'redis://localhost:6379'
       encoded_url = URI.encode(url)
       uri = URI.parse(encoded_url)
       @redis = Redis.new(host: uri.host, port: uri.port, password: uri.password)
