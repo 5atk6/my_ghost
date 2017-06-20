@@ -11,6 +11,19 @@ module Whisper
       enable :logging
     end
 
+    helpers do
+      def protected!
+        return if authorized?
+        headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+        halt 401, "Not authorized\n"
+      end
+
+      def authorized?
+        @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+        @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+      end
+    end
+
     # To get form
     get "/" do
       set_whispers
@@ -33,6 +46,7 @@ module Whisper
 
     # To select a question in the whispers
     get "/index" do
+      protected!
       set_whispers
       slim :"index.html"
     end
